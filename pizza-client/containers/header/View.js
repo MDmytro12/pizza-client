@@ -42,9 +42,11 @@ export const HeaderView = () => {
 
 const BasketContainer = styled.div`
 	display: flex;
-`;
 
-const BasketNumber = styled.p``;
+	&:hover > svg > path {
+		fill: rgba(255, 255, 255, 0.5);
+	}
+`;
 
 const ButtonLine = styled.div`
 	width: 1px;
@@ -58,6 +60,10 @@ const PriceName = styled.p`
 	font-weight: 700;
 	font-size: 16px;
 	height: 100%;
+
+	&:hover {
+		color: rgba(255, 255, 255, 0.5);
+	}
 `;
 
 const ButtonContainer = styled.div`
@@ -70,6 +76,13 @@ const ButtonContainer = styled.div`
 
 	& > a > div > svg > path {
 		fill: white;
+	}
+	&:hover {
+		background-color: #bb4e22;
+		box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.03);
+	}
+	&:hover > div {
+		background-color: rgba(255, 255, 255, 0.7);
 	}
 `;
 
