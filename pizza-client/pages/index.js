@@ -1,7 +1,7 @@
 import React from 'react';
 import { HEADER_TITLES } from '../constants/meta';
 
-import { Header, Menu } from '../containers';
+import { Header, Menu, Assortement } from '../containers';
 import HeadService from './_head';
 
 import { Line } from '../components';
@@ -13,6 +13,7 @@ export default function Home() {
 			<Header />
 			<Line />
 			<Menu />
+			<Assortement />
 		</>
 	);
 }
