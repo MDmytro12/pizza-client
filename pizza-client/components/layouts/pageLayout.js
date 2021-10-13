@@ -14,7 +14,6 @@ const PageContainer = styled.div`
 	font-weight: 500;
 	border-radius: 10px;
 	width: 95%;
-	min-height: 90vh;
 	box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.03);
 	padding-top: 50px;
 	padding-left: 65px;
@@ -23,10 +22,12 @@ const PageContainer = styled.div`
 
 const PageWrapper = styled.div`
 	width: 100%;
-	min-height: 100vh;
 
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	background-color: #ffdf8c;
+
+	padding-top: 35px;
+	padding-bottom: 35px;
 `;
