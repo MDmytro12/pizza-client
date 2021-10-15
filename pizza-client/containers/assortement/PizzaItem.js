@@ -1,34 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FaPlus } from 'react-icons/fa';
 
 export const PizzaItem = ({ pizzaInfo, noMarginEdge }) => {
+	const [pizzaInfoState, setPizzaInfo] = useState(pizzaInfo);
+
+	const onTypeHandler = (index) => {
+		setPizzaInfo({
+			...pizzaInfoState,
+			activeTypes: [index, pizzaInfoState.activeTypes[1]],
+		});
+	};
+
+	const onSizeHandler = (index) => {
+		setPizzaInfo({
+			...pizzaInfoState,
+			activeTypes: [pizzaInfoState.activeTypes[0], index],
+		});
+	};
+
 	return (
 		<Cont>
-			<PizzaAvatar src={pizzaInfo.avatarPath} />
-			<PizzaName>{pizzaInfo.title}</PizzaName>
+			<PizzaAvatar src={pizzaInfoState.avatarPath} />
+			<PizzaName>{pizzaInfoState.title}</PizzaName>
 			<PizzaInfoCont>
-				{pizzaInfo.allTypes[0].map((item, index) => (
+				{pizzaInfoState.allTypes[0].map((item, index) => (
 					<PizzaInfoItem
+						onClick={() => onTypeHandler(index + 1)}
 						size={50}
-						active={index + 1 === pizzaInfo.activeTypes[0]}
+						active={index + 1 === pizzaInfoState.activeTypes[0]}
 						key={index * 78}
 					>
 						{item}
 					</PizzaInfoItem>
 				))}
-				{pizzaInfo.allTypes[1].map((item, index) => (
+				{pizzaInfoState.allTypes[1].map((item, index) => (
 					<PizzaInfoItem
+						onClick={() => {
+							if (pizzaInfoState.accesTypes[1].includes(index + 1)) {
+								onSizeHandler(index + 1);
+							}
+						}}
 						size={30}
 						key={index * 133}
-						active={index + 1 === pizzaInfo.activeTypes[1]}
-						hide={!pizzaInfo.accesTypes[1].includes(index + 1)}
+						active={index + 1 === pizzaInfoState.activeTypes[1]}
+						hide={!pizzaInfoState.accesTypes[1].includes(index + 1)}
 					>
 						{item}
 					</PizzaInfoItem>
 				))}
 			</PizzaInfoCont>
-			<PizzaPriceName>від {pizzaInfo.price} ₽</PizzaPriceName>
+			<PizzaPriceName>від {pizzaInfoState.price} грн.</PizzaPriceName>
 			<PizzaButton>
 				<FaPlus size={13} />
 				<span>Добавти</span>
