@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { BsCart2 } from 'react-icons/bs';
 import Link from 'next/link';
 
-export const HeaderView = () => {
+export const HeaderView = ({ noBasket }) => {
 	return (
 		<HeaderContainer>
 			<Link href="/">
@@ -12,30 +12,32 @@ export const HeaderView = () => {
 						<LogoImg src="/static/png/logo.png" />
 						<LogoTitleContainer>
 							<LogoTitle>реакт піцца</LogoTitle>
-							<LogoSupTitle>найсмачніша піцца у всьому світі</LogoSupTitle>
+							<LogoSupTitle>Hайсмачніша піцца у всьому світі</LogoSupTitle>
 						</LogoTitleContainer>
 					</LogoContainer>
 				</a>
 			</Link>
 
-			<ButtonContainer>
-				<Link href="/">
-					<a>
-						<PriceName>520 ₽</PriceName>
-					</a>
-				</Link>
+			{!noBasket && (
+				<ButtonContainer>
+					<Link href="/">
+						<a>
+							<PriceName>520 ₽</PriceName>
+						</a>
+					</Link>
 
-				<ButtonLine />
+					<ButtonLine />
 
-				<Link href="/">
-					<a>
-						<BasketContainer>
-							<BsCart2 style={{ marginRight: 7 }} />
-							<PriceName>3</PriceName>
-						</BasketContainer>
-					</a>
-				</Link>
-			</ButtonContainer>
+					<Link href="/">
+						<a>
+							<BasketContainer>
+								<BsCart2 style={{ marginRight: 7 }} />
+								<PriceName>3</PriceName>
+							</BasketContainer>
+						</a>
+					</Link>
+				</ButtonContainer>
+			)}
 		</HeaderContainer>
 	);
 };

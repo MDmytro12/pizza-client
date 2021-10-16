@@ -50,6 +50,8 @@ export const MenuView = () => {
 
 	const [showSelect, setShowSelect] = useState(false);
 
+	const [activeSelect, setActiveSelect] = useState(listValues[0].title);
+
 	useEffect(() => {
 		btnNames.forEach((item, index) => {
 			if (index + 1 === 1) {
@@ -85,6 +87,7 @@ export const MenuView = () => {
 		}
 
 		setSelectItems({ ...newSelectItems, [index]: true });
+		setActiveSelect(listValues[index - 1].title);
 	};
 
 	return (
@@ -109,7 +112,7 @@ export const MenuView = () => {
 			>
 				<ListArrow active={showSelect} />
 				<ListTitle>Сортування по :</ListTitle>
-				<ListValue>{listValues[0].title}</ListValue>
+				<ListValue>{activeSelect}</ListValue>
 				<ListSelectContainer
 					onPointerLeave={() => setShowSelect(false)}
 					show={showSelect}
@@ -164,6 +167,8 @@ const ListValue = styled.span`
 	font-size: 14px;
 	color: #fe5f1e;
 	border-bottom: 1px dashed #fe5f1e;
+	min-width: 100px;
+	text-align: center;
 `;
 
 const ListArrow = styled.div`
